@@ -1,5 +1,6 @@
 package com.zerobase.api.product.controller
 
+import com.zerobase.api.product.model.Organization
 import com.zerobase.api.product.model.ProductDto
 import com.zerobase.api.product.service.ProductServiceImpl
 import org.springframework.http.ResponseEntity
@@ -17,7 +18,7 @@ class ProductController(
 ) {
     @GetMapping("/{organizationCode}")
     fun getProduct(
-            @PathVariable organizationCode: String
+            @PathVariable organizationCode: Organization
     ): ResponseEntity<MutableList<ProductDto.GetProductResponseDto>> {
         return ResponseEntity.ok(productServiceImpl.getProduct(organizationCode))
     }

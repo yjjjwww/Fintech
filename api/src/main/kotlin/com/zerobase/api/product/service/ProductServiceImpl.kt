@@ -1,5 +1,6 @@
 package com.zerobase.api.product.service
 
+import com.zerobase.api.product.model.Organization
 import com.zerobase.api.product.model.ProductDto
 import com.zerobase.domain.repository.ProductInfoRepository
 import com.zerobase.domain.repository.ProductListRepository
@@ -11,10 +12,10 @@ class ProductServiceImpl(
         private val productListRepository: ProductListRepository
 ): ProductService {
     override fun getProduct(
-            organizationCode: String
+            organizationCode: Organization
     ): MutableList<ProductDto.GetProductResponseDto> {
 
-        val productInfos = productInfoRepository.findByOrgCd(organizationCode)
+        val productInfos = productInfoRepository.findByOrgCd(organizationCode.organizationCode)
         var productInfoResponses: MutableList<ProductDto.GetProductResponseDto>
             = mutableListOf();
 
