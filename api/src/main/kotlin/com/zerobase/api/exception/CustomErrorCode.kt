@@ -7,5 +7,6 @@ enum class CustomErrorCode(
     val errorCode: String,
     val errorMessage: String
 ) {
-    RESULT_NOT_FOUND(HttpStatus.BAD_REQUEST, "E001", errorMessage = "result not found")
+    RESULT_NOT_FOUND(HttpStatus.BAD_REQUEST, "E001", errorMessage = "result not found"),
+    USER_NOT_FOUND(HttpStatus.BAD_REQUEST, "E002", errorMessage = "user not found")
 }
