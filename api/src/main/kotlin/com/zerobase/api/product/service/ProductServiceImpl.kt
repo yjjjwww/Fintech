@@ -36,12 +36,12 @@ class ProductServiceImpl(
         return productInfoResponses;
     }
 
-    @Cacheable(cacheNames = ["PRODUCT"], key = "#organizationCode")
+    @Cacheable(value = ["PRODUCT"], key = "#organizationCode", cacheManager = "redisCacheManager")
     override fun getProductList(organizationCode: String): Optional<List<ProductInfo>> {
         return productInfoRepository.findByOrgCd(organizationCode)
     }
 
-    @CacheEvict(cacheNames = ["PRODUCT"], key= "#organizationCode")
+    @CacheEvict(value = ["PRODUCT"], key= "#organizationCode", cacheManager = "redisCacheManager")
     override fun saveProduct(
             saveProductRequestDto: ProductDto.SaveProductRequestDto
     ): String {
