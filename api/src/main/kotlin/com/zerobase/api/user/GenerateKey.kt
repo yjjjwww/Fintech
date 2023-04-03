@@ -1,4 +1,4 @@
-package com.zerobase.api.loan
+package com.zerobase.api.user
 
 import org.springframework.stereotype.Component
 import java.util.*
