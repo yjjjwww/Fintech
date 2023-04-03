@@ -2,8 +2,8 @@ package com.zerobase.api.loan.request
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.zerobase.api.loan.GenerateKey
-import com.zerobase.api.loan.encrypt.EncryptComponent
+import com.zerobase.api.loan.GenerateKeys
+import com.zerobase.api.loan.encrypt.EncryptComponents
 import com.zerobase.domain.domain.UserInfo
 import com.zerobase.domain.repository.UserInfoRepository
 import com.zerobase.kafka.producer.LoanRequestSender
@@ -26,9 +26,9 @@ internal class LoanRequestControllerTest {
 
     private lateinit var loanRequestController: LoanRequestController
 
-    private lateinit var generateKey: GenerateKey
+    private lateinit var generateKeys: GenerateKeys
 
-    private lateinit var encryptComponent: EncryptComponent
+    private lateinit var encryptComponents: EncryptComponents
 
     private lateinit var loanRequestSender : LoanRequestSender
 
@@ -45,12 +45,12 @@ internal class LoanRequestControllerTest {
 
     @BeforeEach
     fun init() {
-        generateKey = GenerateKey()
+        generateKeys = GenerateKeys()
 
-        encryptComponent = EncryptComponent()
+        encryptComponents = EncryptComponents()
 
         loanRequestServiceImpl = LoanRequestServiceImpl(
-            generateKey, userInfoRepository, encryptComponent, loanRequestSender
+            generateKeys, userInfoRepository, encryptComponents, loanRequestSender
         )
 
         loanRequestController = LoanRequestController(loanRequestServiceImpl)
